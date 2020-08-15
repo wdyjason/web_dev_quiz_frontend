@@ -11,7 +11,7 @@ class Product extends Component {
                 <p>{data.name}</p>
                 <p>单价:{data.price}元/{data.unit}</p>
                 </div>
-                <button className="store_order_btn" onClick={orderHandle}>+</button>
+                <button className="store_order_btn" onClick={() => orderHandle(data)}>+</button>
             </div>
         )
     }

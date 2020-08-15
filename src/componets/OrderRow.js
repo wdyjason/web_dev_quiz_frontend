@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './OrderRow.css'
 
 class OrderRow extends Component {
     
@@ -19,9 +20,8 @@ class OrderRow extends Component {
                     {data.unit}    
                 </td>
                 <td>
-                    <button className="order_delete_btn" onClick={deleteHandle}>删除</button>    
+                    <button className="order_delete_btn" onClick={() => deleteHandle(data.id)}>删除</button>    
                 </td>
-                <hr></hr>
             </tr>
            
         )

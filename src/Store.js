@@ -1,20 +1,27 @@
 import React, { Component } from 'react'
 import Product from './componets/Product'
-import fetchData from './componets/utils';
+import {fetchData} from './componets/utils';
 import './Store.css'
 
-const requsetUrl = ' http://127.0.0.1:8080/product/list';
+const requestUrl = ' http://127.0.0.1:8080/product/list';
+const addUrl = 'http://127.0.0.1:8080/order/'
 
 class Store extends Component {
     state = {
         dataList:[]
     }
-    orderHandle = () => {
-
+    orderHandle = (data) => {
+        let futureQuantity = data.quantity + 1
+        fetchData(addUrl + data.id + "/?quantity=" + futureQuantity, 'PATCH')
+        this.state.dataList.forEach(e => {
+            if (e.id === data.id) {
+                e.quantity = futureQuantity
+            }
+        })
     }
 
     componentDidMount = () =>{
-        fetchData(requsetUrl, 'GET').then(res => {
+        fetchData(requestUrl, 'GET').then(res => {
             // console.log(res);
             this.setState({
                 dataList: res
@@ -28,7 +35,7 @@ class Store extends Component {
             <div className="store_all">
                 {
                     this.state.dataList.map(e => {
-                        return <Product key={"key_product_" + e.id} data={e} orderHanle={this.orderHandle}/>
+                        return <Product key={"key_product_" + e.id} data={e} orderHandle={this.orderHandle}/>
                     })
                 }
             </div>

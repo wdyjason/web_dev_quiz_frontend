@@ -1,0 +1,18 @@
+.order_all {
+    width: 100%;
+    margin: 1em;
+    margin-right: 3em;
+}
+thead td {
+    font-size: larger;
+    font-weight: bolder;
+}
+.table_head {
+    background-color: gray;
+}
+
+.order_all tr {
+    border-style: solid;
+    border-bottom: gray;
+    height: 4em;
+}
