@@ -1,8 +1,8 @@
 const proxy = require('http-proxy-middleware')
 
 module.exports = function (app) {
-    app.use(proxy('*', {
-        target: 'http://localhost',
-        changeOrigin: false
+    app.use(proxy('/request/', {
+        target: 'http://localhost:8080',
+        changeOrigin: true
     }))
 }

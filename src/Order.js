@@ -1,20 +1,25 @@
 import React, { Component } from 'react'
 import OrderRow from './componets/OrderRow';
+import fetchData from './componets/utils';
 
-const requsetUrl = ' http://localhost:8080/order/list';
+const requsetUrl = ' http://127.0.0.1:8080/order/list';
 
 class Order extends Component{
     state = {
         dataList:[]
     }
 
-    componentDidMount() {
-        fetchData(requsetUrl).then((result) => {
-            // this.setState({
-            //     dataList:result,
-            // })
+    componentDidMount = () =>{
+        fetchData(requsetUrl, 'GET').then(res => {
+            // console.log(res);
+            this.setState({
+                dataList: res
+            })
+        }).catch(err => {
+            console.log(err)
         })
     }
+  
     
     deleteHanle = () => {
         
@@ -47,22 +52,5 @@ class Order extends Component{
     }
 }
 
-async function fetchData(url) {
-    return await fetch(url, {
-        method: 'GET',
-        headers: {
-            "Content-Type":'Application/json'
-        },
-        mode: 'no-cors'
-    })
-      .then((response) => {
-        if (response.status === 200) {
-            console.log(response)
-          return response.json();
-        }
-        throw new Error('error');
-      })
-      .catch((error) => console.error(error));
-  }
 
 export default Order;

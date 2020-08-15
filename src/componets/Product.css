@@ -1,0 +1,24 @@
+.product {
+    border-style: solid;
+    border-color: gray;
+    width: 16em;
+    margin: 2em;
+}
+
+.product > img {
+    width: 14em;
+    height: 15em;
+}
+.product_display {
+    text-align: left;
+    margin-left: 2em;
+}
+.store_order_btn {
+    display: inline-block;
+    border-radius: 50%;
+    border-style: none;
+    float: right;
+    transform: translateY(-3em);
+    margin-right: 2em;
+    zoom:150%;
+}
